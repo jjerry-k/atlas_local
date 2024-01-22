@@ -1,0 +1,8 @@
+{
+    "collectionName": "movies",
+    "database": "sample_mflix",
+    "mappings": {
+        "dynamic": true
+    },
+    "name": "searchIndex"
+}

@@ -1,0 +1,35 @@
+services:
+  mongo:
+    container_name: mongo
+    build:
+      dockerfile: Dockerfile
+    privileged: true
+    command: |
+      make init
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - containers:/var/lib/containers
+      - cni:/etc/cni
+      - ./:/srv
+    ports:
+      - ${PORT}:${PORT}
+    environment:
+      - PORT=${PORT}
+      - USERNAME=${USERNAME}
+      - PASSWORD=${PASSWORD}
+      - DEPLOYMENT_NAME=${DEPLOYMENT_NAME}
+
+volumes:
+  containers: 
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /disk1/atlas/containers
+  
+  cni: 
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /disk1/atlas/cni

@@ -1,0 +1,15 @@
+{
+    "collectionName": "embedded_movies",
+    "database": "sample_mflix",
+    "mappings": {
+        "dynamic": true,
+        "fields": {
+            "plot_embedding": {
+                "type": "knnVector",
+                "dimensions": 1536,
+                "similarity": "euclidean"
+            }
+        }
+    },
+    "name": "vectorSearchIndex"
+}
