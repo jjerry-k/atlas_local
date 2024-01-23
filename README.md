@@ -21,7 +21,7 @@ curl  https://atlas-education.s3.amazonaws.com/sampledata.archive -o sample/samp
 
 2. Restore MongoDB
 ``` bash
-docker exec -ti atlas-mongo-1 make sample
+docker exec -ti mongo make sample
 ```
 
 3. Test vector search
