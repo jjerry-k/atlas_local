@@ -3,7 +3,7 @@
 ## Quick Run
 1. Clone this repository
 ```bash 
-git clone https://github.com/jjerry-k/fastapi_template.git
+git clone https://github.com/jjerry-k/atlas_local.git
 ```
 
 2. Change environment variables in .env file 
