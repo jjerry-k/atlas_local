@@ -6,7 +6,9 @@
 git clone https://github.com/jjerry-k/fastapi_template.git
 ```
 
-2. Run docker
+2. Change environment variables in .env file 
+
+3. Run docker
 ``` bash
 docker compose up -d
 ``` 
