@@ -1,43 +1,10 @@
-# Setting up Local Atlas
 
-## Quick Run
-1. Clone this repository
-```bash 
-git clone https://github.com/jjerry-k/atlas_local.git
-```
+from pymongo import MongoClient
 
-2. Change environment variables in .env file 
-```bash
-PORT = 27778 # Mongo DB PORT
-USERNAME = root # Mongo DB username
-PASSWORD = root # Mongo DB password
-DEPLOYMENT_NAME = LOCAL # Deployment name
-ATLAS_ROOT = /disk/atlas # Atlas data path
-```
+client = MongoClient(f"mongodb://root:root@localhost:27778/?directConnection=true")
+db = client.sample_mflix
 
-3. Run docker
-``` bash
-docker compose up -d
-``` 
-
-## Example Vector Search
-1. Download example data
-```bash
-curl  https://atlas-education.s3.amazonaws.com/sampledata.archive -o sample/sampledata.archive
-```
-
-2. Restore MongoDB
-``` bash
-docker exec -ti mongo make sample
-```
-
-3. Test vector search
-- If you use vscode, you can easily test it in [MongoDB for VS Code](https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode) extension.
-```javascript
-// search.js
-use('sample_mflix');
-
-db.embedded_movies.aggregate([
+similar_docs = db["embedded_movies"].aggregate([
     {
       "$vectorSearch": {
         "index": "vectorSearchIndex",
@@ -52,8 +19,10 @@ db.embedded_movies.aggregate([
         "_id": 0,
         "plot": 1,
         "title": 1,
-        "score": { $meta: "vectorSearchScore" }
+        "score": { "meta": "vectorSearchScore" }
       }
     }
   ])
-```
+
+for doc in similar_docs:
+    print(doc)
