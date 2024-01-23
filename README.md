@@ -1,5 +1,10 @@
 # Setting up Local Atlas
 
+## Requirements
+- **CPU with AVX support**
+- Docker
+- Docker Compose
+
 ## Quick Run
 1. Clone this repository
 ```bash 
