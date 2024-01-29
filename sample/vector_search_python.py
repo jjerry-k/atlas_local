@@ -19,7 +19,7 @@ similar_docs = db["embedded_movies"].aggregate([
         "_id": 0,
         "plot": 1,
         "title": 1,
-        "score": { "meta": "vectorSearchScore" }
+        "score": { "$meta": "vectorSearchScore" }
       }
     }
   ])
