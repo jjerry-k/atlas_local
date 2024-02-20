@@ -19,7 +19,7 @@ init:
 
 index_create:
 	@echo "Index Setting"; \
-	atlas deployments search indexes create --file indexDef.json
+	atlas deployments search indexes create --type local --deploymentName $(DEPLOYMENT_NAME) --username $(USERNAME) --password $(PASSWORD) --file indexDef.json
 
 example:
 	@mongorestore --archive=sample/sampledata.archive --port=$(PORT) --username $(USERNAME) --password $(PASSWORD); \

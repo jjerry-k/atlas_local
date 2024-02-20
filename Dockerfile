@@ -1,4 +1,4 @@
-FROM mongodb/atlas:latest as base_image
+FROM mongodb/atlas:v1.14.3 as base_image
 
 LABEL maintainer "Jerry Kim"
 

@@ -1,7 +1,14 @@
 # Setting up Local Atlas
 
+- [Setting up Local Atlas](#setting-up-local-atlas)
+	- [Requirements](#requirements)
+	- [Quick Run](#quick-run)
+	- [Example Vector Search using MongoDB sample](#example-vector-search-using-mongodb-sample)
+	- [Build Your Own](#build-your-own)
+	- [Reference](#reference)
+
 ## Requirements
-- **CPU with AVX support**
+- **CPU with AVX support (Very Important)**
 - Docker
 - Docker Compose
 
@@ -25,7 +32,7 @@ ATLAS_ROOT = /disk/atlas # Atlas data path
 docker compose up -d
 ``` 
 
-## Example Vector Search
+## Example Vector Search using MongoDB sample
 1. Download example data
 ```bash
 curl  https://atlas-education.s3.amazonaws.com/sampledata.archive -o sample/sampledata.archive
@@ -62,3 +69,22 @@ db.embedded_movies.aggregate([
     }
   ])
 ```
+
+## Build Your Own
+**Please refer to `example` directory**
+
+1. Make and insert your data into MongoDB
+   - [sample file](./example/add_data.py)
+   
+
+2. Create search index
+   - Make your `indexDef.json` on root of this project
+   - run `docker exec -ti mongo make index_create`
+   - [sample file](./example/indexDef.json)
+
+3. Run vector search script
+   - [sample file](./example/vector_search_python.py)
+
+
+## Reference
+- MongoDB Atlas: https://www.mongodb.com/atlas

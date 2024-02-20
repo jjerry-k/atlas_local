@@ -1,0 +1,14 @@
+{
+    "database": "sample",
+    "collectionName": "example",
+    "mappings": {
+        "fields": {
+            "vector": {
+                "type": "vector",
+                "dimensions": 128,
+                "similarity": "euclidean"
+            }
+        }
+    },
+    "name": "vectorSearchIndex"
+}
